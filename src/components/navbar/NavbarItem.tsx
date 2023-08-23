@@ -15,8 +15,6 @@ const NavbarItem: FC<NavbarItemProps> = ({
     onClick,
     active,
 }) => {
-    console.log(active);
-
     return (
         <Box>
             <Link href={href}>

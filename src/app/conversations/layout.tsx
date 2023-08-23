@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
 
-export async function ConversationsLayout({
+export default async function ConversationsLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -12,5 +12,3 @@ export async function ConversationsLayout({
         </Sidebar>
     );
 }
-
-export default ConversationsLayout;
