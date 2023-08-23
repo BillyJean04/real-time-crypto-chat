@@ -9,7 +9,7 @@ declare module "@mui/material/styles" {
 }
 
 const text = "#f4f4fb";
-const background = "#160d26";
+const background = "#080015";
 
 export const base = {} satisfies ThemeOptions;
 

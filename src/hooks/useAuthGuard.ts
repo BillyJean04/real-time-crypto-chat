@@ -7,9 +7,9 @@ export function useAuthGuard() {
     const { wallet } = useMetaMask();
     useEffect(() => {
         if (wallet.accounts.length < 1) {
-            router.push("/auth");
-        } else {
             router.push("/");
+        } else {
+            router.push("/conversations");
         }
     }, [router, wallet.accounts.length]);
 }
