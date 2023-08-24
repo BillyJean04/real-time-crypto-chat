@@ -1,14 +1,19 @@
-import React from "react";
+import { ReactNode } from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
+import ConversationList from "@/app/conversations/components/ConversationList";
+import Box from "@mui/material/Box";
 
 export default async function ConversationsLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
 }) {
     return (
         <Sidebar>
-            <div>{children}</div>
+            <Box>
+                <ConversationList />
+                <div>{children}</div>
+            </Box>
         </Sidebar>
     );
 }

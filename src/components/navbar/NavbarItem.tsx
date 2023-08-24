@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Box } from "@mui/material";
+import { FC } from "react";
+import Box from "@mui/material/Box";
 import Link from "next/link";
 
 interface NavbarItemProps {

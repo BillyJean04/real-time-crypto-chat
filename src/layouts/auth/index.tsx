@@ -2,7 +2,8 @@
 
 import { useMetaMask } from "@/hooks/useMetaMask";
 import { useAuthGuard } from "@/hooks/useAuthGuard";
-import { Box, Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const AuthLayout = () => {
     const { wallet, hasProvider, isConnecting, connectMetaMask } =

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 
 interface ClientOnlyProps {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
-const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
+const ClientOnly: FC<ClientOnlyProps> = ({ children }) => {
     const [hasMounted, setHasMounted] = useState<boolean>(false);
 
     useEffect(() => {

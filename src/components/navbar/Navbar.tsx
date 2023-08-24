@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
 import { useRoutes } from "@/hooks/useRoutes";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import NavbarItem from "@/components/navbar/NavbarItem";
 
 const Navbar = () => {
@@ -12,10 +11,10 @@ const Navbar = () => {
             width="70px"
             flexDirection="column"
             alignItems="center"
-            justifyContent="center"
             gap="15px"
             bgcolor="#160d26"
             height="100dvh"
+            padding="25px 0"
             borderRight="1px solid #1d132f"
         >
             {routes.map((route) => (

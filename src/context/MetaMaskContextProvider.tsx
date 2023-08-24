@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useCallback, useEffect, useState } from "react";
+import {
+    createContext,
+    ReactNode,
+    useCallback,
+    useEffect,
+    useState,
+} from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 
 interface WalletState {
@@ -29,7 +35,7 @@ export const MetaMaskContext = createContext<MetaMaskContextData>(
 export const MetaMaskContextProvider = ({
     children,
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
 }) => {
     const [hasProvider, setHasProvider] = useState<boolean | null>(null);
 
