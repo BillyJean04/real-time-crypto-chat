@@ -15,7 +15,7 @@ const Navbar = () => {
             bgcolor="#160d26"
             height="100dvh"
             padding="25px 0"
-            borderRight="1px solid #1d132f"
+            borderRight="2px solid #1d132f"
         >
             {routes.map((route) => (
                 <Box key={route.label}>
