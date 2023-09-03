@@ -5,7 +5,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@/theme/provider";
-import { MetaMaskContextProvider } from "@/context/MetaMaskContextProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["500"] });
 
@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en">
-            <body className={roboto.className}>
-                <MetaMaskContextProvider>
+        <ClerkProvider>
+            <html lang="en">
+                <body className={roboto.className}>
                     <ThemeProvider>{children}</ThemeProvider>
-                </MetaMaskContextProvider>
-            </body>
-        </html>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }
