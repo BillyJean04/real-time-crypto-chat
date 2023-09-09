@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -24,9 +24,12 @@
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "svix": "^1.10.0",
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@clerk/clerk-sdk-node": "^4.12.5",
+    "encoding": "^0.1.13",
     "prettier": "^3.0.1",
     "prisma": "^5.2.0"
   }
