@@ -38,7 +38,7 @@ export const useRoutes = () => {
                 active: pathname === "/notifications",
             },
         ],
-        [pathname]
+        [conversationId, pathname]
     );
     return routes;
 };
