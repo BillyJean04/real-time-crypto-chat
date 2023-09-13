@@ -6,17 +6,18 @@ import {
     Notifications,
     Settings,
 } from "@mui/icons-material";
+import useConversations from "@/hooks/useConversations";
 
 export const useRoutes = () => {
     const pathname = usePathname();
-
+    const conversationId = useConversations();
     const routes = useMemo(
         () => [
             {
                 label: "Chat",
                 href: "/conversations",
                 icon: ChatBubble,
-                active: pathname === "/conversations",
+                active: pathname === "/conversations" || !!conversationId,
             },
             {
                 label: "Users",

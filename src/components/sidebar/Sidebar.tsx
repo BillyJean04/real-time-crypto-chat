@@ -6,7 +6,7 @@ async function Sidebar({ children }: { children: ReactNode }) {
     return (
         <Box display="flex">
             <Navbar />
-            <Box>{children}</Box>
+            <Box width="100%">{children}</Box>
         </Box>
     );
 }

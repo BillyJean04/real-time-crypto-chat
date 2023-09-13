@@ -10,6 +10,8 @@ declare module "@mui/material/styles" {
 
 const text = "#f4f4fb";
 const background = "#080015";
+const midgray = "#a29ea8";
+const secondary = "#ef6f6c";
 
 export const base = {} satisfies ThemeOptions;
 
@@ -21,6 +23,10 @@ export const palette = {
         text: {
             primary: text,
         },
+        grey: {
+            500: midgray,
+        },
+        secondary: { main: secondary },
     },
 } satisfies ThemeOptions;
 const components = {
