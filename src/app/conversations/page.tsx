@@ -1,7 +1,9 @@
 "use client";
 
+import EmptyState from "@/components/EmptyState";
+
 const ConversationsPage = () => {
-    return <></>;
+    return <EmptyState />;
 };
 
 export default ConversationsPage;
