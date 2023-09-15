@@ -11,9 +11,12 @@ const useConversations = () => {
         return params.conversationId as string;
     }, [params?.conversationId]);
 
-    return {
-        conversationId,
-    };
+    return useMemo(
+        () => ({
+            conversationId,
+        }),
+        [conversationId]
+    );
 };
 
 export default useConversations;
