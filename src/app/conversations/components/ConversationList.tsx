@@ -1,17 +1,23 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Group from "@mui/icons-material/Group";
 import { User } from "@prisma/client";
 import ConversationBox from "@/app/conversations/components/ConversationBox";
 import { useParams } from "next/navigation";
+import { FullConversationType } from "@/types";
 
 interface ConversationListProps {
-    users: User[];
+    user: User;
+    initialItems: FullConversationType[];
 }
 
-const ConversationList: FC<ConversationListProps> = ({ users }) => {
+const ConversationList: FC<ConversationListProps> = ({
+    user,
+    initialItems,
+}) => {
+    const [items, setItems] = useState(initialItems);
     const params = useParams();
 
     return (
@@ -45,11 +51,12 @@ const ConversationList: FC<ConversationListProps> = ({ users }) => {
                 </Box>
             </Box>
             <Box>
-                {users.map((user) => (
+                {items.map((conversation) => (
                     <ConversationBox
-                        key={user.id}
                         user={user}
-                        selected={params.conversationId === user.id}
+                        key={conversation.id}
+                        conversation={conversation}
+                        selected={params.conversationId === conversation.id}
                     />
                 ))}
             </Box>

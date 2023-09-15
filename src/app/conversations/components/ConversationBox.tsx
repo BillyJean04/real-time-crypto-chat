@@ -2,22 +2,29 @@
 import { FC, useCallback } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { AccountCircle } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { separateAddress } from "@/lib/utils";
 import { User } from "@prisma/client";
+import { useOtherUser } from "@/hooks/useOtherUser";
+import { FullConversationType } from "@/types";
+import Avatar from "@/components/Avatar";
 
 interface ConversationBoxProps {
     user: User;
+    conversation: FullConversationType;
     selected: boolean;
 }
 
-const ConversationBox: FC<ConversationBoxProps> = ({ user, selected }) => {
+const ConversationBox: FC<ConversationBoxProps> = ({
+    user,
+    conversation,
+    selected,
+}) => {
     const router = useRouter();
-
+    const otherUser = useOtherUser(conversation, user);
     const handleClick = useCallback(() => {
-        router.push(`/conversations/${user.id}`);
-    }, [router, user]);
+        router.push(`/conversations/${conversation.id}`);
+    }, [router, conversation]);
     return (
         <Box
             onClick={handleClick}
@@ -32,7 +39,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({ user, selected }) => {
             ]}
         >
             <Box width="100%" display="flex" alignItems="center" gap="10px">
-                {user?.image || <AccountCircle fontSize="large" />}
+                <Avatar user={otherUser} />
                 <Box
                     width="100%"
                     display="flex"
@@ -41,7 +48,8 @@ const ConversationBox: FC<ConversationBoxProps> = ({ user, selected }) => {
                 >
                     <Box>
                         <Typography fontWeight="bold" fontSize="0.9rem">
-                            {separateAddress(user.address)}
+                            {otherUser?.name ||
+                                separateAddress(otherUser.address)}
                         </Typography>
                         <Typography
                             fontSize="0.75rem"
