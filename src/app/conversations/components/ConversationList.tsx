@@ -26,9 +26,9 @@ const ConversationList: FC<ConversationListProps> = ({
             flexDirection="column"
             padding="25px 0"
             borderRight="2px solid #1d132f"
-            height="100dvh"
             gap="15px"
             width="450px"
+            height="100dvh"
         >
             <Box
                 display="flex"

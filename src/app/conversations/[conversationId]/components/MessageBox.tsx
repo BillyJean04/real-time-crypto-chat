@@ -1,0 +1,94 @@
+"use client";
+import { FC } from "react";
+import { FullMessageType } from "@/types";
+import { User } from "@prisma/client";
+import Box from "@mui/material/Box";
+import Avatar from "@/components/ui/Avatar";
+import { separateAddress } from "@/lib/utils";
+import { format } from "date-fns";
+import Image from "next/image";
+
+interface MessageBox {
+    data: FullMessageType;
+    currentUser: User;
+}
+
+const MessageBox: FC<MessageBox> = ({ data, currentUser }) => {
+    const isOwn = currentUser?.address === data?.sender?.address;
+    return (
+        <Box
+            display="flex"
+            sx={[
+                isOwn
+                    ? {
+                          justifyContent: "flex-end",
+                      }
+                    : {},
+            ]}
+        >
+            <Box
+                display="flex"
+                alignItems="center"
+                gap="5px"
+                sx={[
+                    isOwn
+                        ? {
+                              flexDirection: "row-reverse",
+                          }
+                        : {},
+                ]}
+            >
+                <Box height="100%" display="flex" alignItems="start">
+                    <Avatar user={data.sender} />
+                </Box>
+                <Box display="flex" flexDirection="column" gap="3px">
+                    <Box
+                        sx={[
+                            {
+                                padding: "10px 20px",
+                            },
+                            isOwn
+                                ? {
+                                      backgroundColor: "secondary.main",
+                                      borderRadius: "15px 15px 0 15px",
+                                  }
+                                : {
+                                      backgroundColor: "#333043",
+                                      borderRadius: "15px 15px 15px 0",
+                                  },
+                        ]}
+                    >
+                        {data.image ? (
+                            <Image
+                                src={data.image}
+                                alt="Image"
+                                height="288"
+                                width="288"
+                            />
+                        ) : (
+                            <>{data.body}</>
+                        )}
+                    </Box>
+                    <Box
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="flex-end"
+                        gap="5px"
+                        color="gray"
+                        fontWeight="300"
+                        fontSize="0.85rem"
+                    >
+                        <Box>
+                            {data.sender?.name
+                                ? data.sender.name
+                                : separateAddress(data.sender.address)}
+                        </Box>
+                        <Box>{format(new Date(data.createdAt), "p")}</Box>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
+    );
+};
+
+export default MessageBox;

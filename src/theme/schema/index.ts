@@ -1,6 +1,6 @@
 import type { ThemeOptions } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { MuiButton } from "@/theme/schema/button";
+import { MuiButtonBase } from "@/theme/schema/button";
 
 declare module "@mui/material/styles" {
     interface BreakpointOverrides {
@@ -31,7 +31,7 @@ export const palette = {
 } satisfies ThemeOptions;
 const components = {
     components: {
-        MuiButton,
+        MuiButtonBase,
     },
 } satisfies ThemeOptions;
 
