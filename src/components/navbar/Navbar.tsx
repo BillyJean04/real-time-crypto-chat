@@ -13,9 +13,9 @@ const Navbar = () => {
             alignItems="center"
             gap="15px"
             bgcolor="#160d26"
-            height="100dvh"
             padding="25px 0"
             borderRight="2px solid #1d132f"
+            height="100dvh"
         >
             {routes.map((route) => (
                 <Box key={route.label}>

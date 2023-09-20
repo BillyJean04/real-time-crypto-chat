@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import Box from "@mui/material/Box";
 import Navbar from "@/components/navbar/Navbar";
+import Box from "@mui/material/Box";
 
 async function Sidebar({ children }: { children: ReactNode }) {
     return (

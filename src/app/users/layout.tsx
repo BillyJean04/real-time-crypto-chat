@@ -13,7 +13,7 @@ export default async function UsersLayout({
 
     return (
         <Sidebar>
-            <Box height="100dvh" display="flex" flexDirection="row">
+            <Box display="flex" flexDirection="row">
                 <Box width="450px">{users && <UserList users={users} />}</Box>
                 {children}
             </Box>

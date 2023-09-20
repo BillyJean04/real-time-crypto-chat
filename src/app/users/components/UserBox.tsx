@@ -6,7 +6,7 @@ import { User } from "@prisma/client";
 import { separateAddress } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/ui/Avatar";
 
 interface UserBoxProps {
     user: User;

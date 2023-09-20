@@ -1,6 +1,6 @@
 import type { ThemeOptions } from "@mui/material";
 
-export const MuiButton = {
+export const MuiButtonBase = {
     styleOverrides: {
         root: {
             backgroundColor: "#ef6f6c",
@@ -13,4 +13,4 @@ export const MuiButton = {
             },
         },
     },
-} satisfies NonNullable<ThemeOptions["components"]>["MuiButton"];
+} satisfies NonNullable<ThemeOptions["components"]>["MuiButtonBase"];

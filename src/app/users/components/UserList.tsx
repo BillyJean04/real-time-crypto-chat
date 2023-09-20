@@ -16,9 +16,9 @@ const UserList: FC<UserListProps> = ({ users }) => {
             display="flex"
             flexDirection="column"
             borderRight="2px solid #1d132f"
-            height="100dvh"
             padding="25px 0"
             gap="15px"
+            height="100dvh"
         >
             <Box
                 display="flex"

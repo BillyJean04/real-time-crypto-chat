@@ -1,13 +1,14 @@
 "use client";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
 import { separateAddress } from "@/lib/utils";
 import { User } from "@prisma/client";
+import Avatar from "@/components/ui/Avatar";
 import { useOtherUser } from "@/hooks/useOtherUser";
 import { FullConversationType } from "@/types";
-import Avatar from "@/components/Avatar";
+import { format } from "date-fns";
 
 interface ConversationBoxProps {
     user: User;
@@ -25,6 +26,25 @@ const ConversationBox: FC<ConversationBoxProps> = ({
     const handleClick = useCallback(() => {
         router.push(`/conversations/${conversation.id}`);
     }, [router, conversation]);
+
+    const lastMessage = useMemo(() => {
+        const messages = conversation.messages || [];
+
+        return messages[messages.length - 1];
+    }, [conversation.messages]);
+
+    const lastMessageText = useMemo(() => {
+        if (lastMessage?.image) {
+            return "Sent an image";
+        }
+
+        if (lastMessage?.body) {
+            return lastMessage?.body;
+        }
+
+        return "Started a conversation";
+    }, [lastMessage]);
+
     return (
         <Box
             onClick={handleClick}
@@ -54,13 +74,19 @@ const ConversationBox: FC<ConversationBoxProps> = ({
                         <Typography
                             fontSize="0.75rem"
                             sx={[
+                                {
+                                    width: "200px",
+                                    whiteSpace: "nowrap",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                },
                                 { color: "grey.500" },
                                 selected && {
                                     color: "text.primary",
                                 },
                             ]}
                         >
-                            Hey! How are you?
+                            {lastMessageText}
                         </Typography>
                     </Box>
                     <Box>
@@ -73,7 +99,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({
                                 },
                             ]}
                         >
-                            1 min
+                            {format(new Date(lastMessage.createdAt), "p")}
                         </Typography>
                     </Box>
                 </Box>

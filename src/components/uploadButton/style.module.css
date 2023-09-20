@@ -1,0 +1,8 @@
+.uploadButton {
+    display: flex;
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    padding: 0;
+
+}
