@@ -99,7 +99,8 @@ const ConversationBox: FC<ConversationBoxProps> = ({
                                 },
                             ]}
                         >
-                            {format(new Date(lastMessage.createdAt), "p")}
+                            {lastMessage &&
+                                format(new Date(lastMessage.createdAt), "p")}
                         </Typography>
                     </Box>
                 </Box>
