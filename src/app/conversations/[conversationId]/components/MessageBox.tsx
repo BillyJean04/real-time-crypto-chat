@@ -11,10 +11,21 @@ import Image from "next/image";
 interface MessageBox {
     data: FullMessageType;
     currentUser: User;
+    // isLast?: boolean;
 }
 
-const MessageBox: FC<MessageBox> = ({ data, currentUser }) => {
+const MessageBox: FC<MessageBox> = ({
+    data,
+    currentUser,
+    // , isLast
+}) => {
     const isOwn = currentUser?.address === data?.sender?.address;
+
+    // const seenList = (data.seen || [])
+    //     .filter((user) => user.address !== data.sender.address)
+    //     .map((user) => user.address)
+    //     .join(", ");
+
     return (
         <Box
             display="flex"
@@ -93,6 +104,9 @@ const MessageBox: FC<MessageBox> = ({ data, currentUser }) => {
                                 : separateAddress(data.sender.address)}
                         </Box>
                         <Box>{format(new Date(data.createdAt), "p")}</Box>
+                        {/*{isLast && isOwn && seenList.length > 0 && (*/}
+                        {/*    <Box>{`Seen by ${seenList}`}</Box>*/}
+                        {/*)}*/}
                     </Box>
                 </Box>
             </Box>
